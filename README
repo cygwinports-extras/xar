@@ -1,0 +1,89 @@
+xar
+------------------------------------------
+The XAR project aims to provide an easily extensible archive format.
+Important design decisions include an easily extensible XML table of
+contents for random access to archived files, storing the toc at the
+beginning of the archive to allow for efficient handling of streamed
+archives, the ability to handle files of arbitrarily large sizes, the
+ability to choose independent encodings for individual files in the
+archive, the ability to store checksums for individual files in both
+compressed and uncompressed form, and the ability to query the table of
+content's rich meta-data. 
+
+Runtime requirements:
+  cygwin-1.5.25-7
+  libbz2_1-1.0.3-1
+  libxml2-2.6.30-1
+  openssl-0.9.8g-1
+  zlib-1.2.3-2
+
+Build requirements:
+(besides corresponding -devel packages)
+  cygwin-1.5.25-7
+  autoconf2.5-2.61-1
+  binutils-20060817-1
+  cygport-0.3.7-1
+  e2fsprogs-1.35-3
+  gawk-3.1.5-4
+  gcc-core-3.4.4-3
+  make-3.81-1
+  sed-4.1.5-2
+
+Canonical website:
+  http://code.google.com/p/xar/
+
+Canonical download:
+  http://xar.googlecode.com/files/
+
+-------------------------------------------
+
+Build instructions:
+  unpack xar-1.5.2-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./xar-1.5.2-X.cygport all
+
+This will create:
+  /usr/src/libxar-devel-1.5.2-X.tar.bz2
+  /usr/src/libxar1-1.5.2-X.tar.bz2
+  /usr/src/xar-1.5.2-X-src.tar.bz2
+  /usr/src/xar-1.5.2-X.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary packages:
+
+(xar)
+  /usr/bin/xar.exe
+  /usr/share/doc/Cygwin/xar-1.5.2.README
+  /usr/share/doc/xar-1.5.2/INSTALL
+  /usr/share/doc/xar-1.5.2/LICENSE
+  /usr/share/doc/xar-1.5.2/TODO
+  /usr/share/man/man1/xar.1.gz
+
+(libxar1)
+  /usr/bin/cygxar-1.dll
+
+(libxar-devel)
+  /usr/include/xar/xar.h
+  /usr/lib/libxar.a
+  /usr/lib/libxar.dll.a
+  /usr/lib/libxar.la
+
+------------------
+
+Port Notes:
+
+----- version 1.5.2-1 -----
+Version bump.
+
+----- version 1.5.1-1 -----
+Version bump. Now works with .xar files created on other systems.
+
+----- version 1.4-1 -----
+Initial release for Cygwin.
+
+
+Cygwin port maintained by:
+http://sourceware.org/cygwinports/

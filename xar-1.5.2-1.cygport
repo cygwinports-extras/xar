@@ -1,0 +1,21 @@
+DESCRIPTION="Extensible archive format"
+HOMEPAGE="http://code.google.com/p/xar/"
+SRC_URI="http://xar.googlecode.com/files/${P}.tar.gz"
+
+NO_AUTOHEADER=1
+
+abi=1
+PKG_NAMES="xar libxar${abi} libxar-devel"
+PKG_HINTS='setup lib devel'
+PKG_CONTENTS[0]='usr/bin/*.exe usr/share/'
+PKG_CONTENTS[1]="usr/bin/*-${abi}.dll"
+PKG_CONTENTS[2]='usr/include/ usr/lib/'
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	sed -e 's#installed=no#installed=yes#' \
+		-e 's#cygxar#../bin/cygxar#' \
+		-i ${D}/usr/lib/libxar.la
+}
