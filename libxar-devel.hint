@@ -1,7 +1,7 @@
-category: Archive Libs
-requires: cygwin libbz2_1 libxml2 openssl zlib
+category: Archive
+requires: cygwin libxar1 libbz2-devel libxml2-devel openssl-devel zlib-devel
 external-source: xar
-sdesc: "Extensible archive format (runtime)"
+sdesc: "Extensible archive format (development)"
 ldesc: "The XAR project aims to provide an easily extensible archive format.
 Important design decisions include an easily extensible XML table of
 contents for random access to archived files, storing the toc at the

@@ -1,5 +1,5 @@
 category: Archive
-requires: cygwin libxar1
+requires: cygwin libgcc1 libxar1
 sdesc: "Extensible archive format (utility)"
 ldesc: "The XAR project aims to provide an easily extensible archive format.
 Important design decisions include an easily extensible XML table of

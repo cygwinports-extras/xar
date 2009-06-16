@@ -1,15 +1,14 @@
 DESCRIPTION="Extensible archive format"
 HOMEPAGE="http://code.google.com/p/xar/"
 SRC_URI="http://xar.googlecode.com/files/${P}.tar.gz"
+PATCH_URI="1.5.2-cygwin.patch"
+
+PKG_NAMES="xar libxar1 libxar-devel"
+xar_CONTENTS='usr/bin/*.exe usr/share/'
+libxar1_CONTENTS="usr/bin/*-1.dll"
+libxar_devel_CONTENTS='usr/include/ usr/lib/'
 
 NO_AUTOHEADER=1
-
-abi=1
-PKG_NAMES="xar libxar${abi} libxar-devel"
-PKG_HINTS='setup lib devel'
-PKG_CONTENTS[0]='usr/bin/*.exe usr/share/'
-PKG_CONTENTS[1]="usr/bin/*-${abi}.dll"
-PKG_CONTENTS[2]='usr/include/ usr/lib/'
 
 src_install() {
 	cd ${B}

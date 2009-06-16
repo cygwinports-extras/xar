@@ -1,17 +1,22 @@
 --- origsrc/xar-1.5.2/Makefile.in	2007-12-29 12:49:57.000000000 -0600
 +++ src/xar-1.5.2/Makefile.in	2007-12-29 22:25:13.359375000 -0600
-@@ -25,7 +25,11 @@
+@@ -25,11 +25,12 @@
  CPPFLAGS := @CPPFLAGS@
  CFLAGS := @CFLAGS@ 
  A_CFLAGS := $(CFLAGS) 
 +ifeq (pecoff, @abi@)
-+S_CFLAGS := $(CFLAGS) -DPIC
++S_CFLAGS := $(CFLAGS) -DPIC -DDLL_EXPORT
 +else
  S_CFLAGS := $(CFLAGS) -fPIC -DPIC
 +endif
  ifeq (macho, @abi@)
  S_CFLAGS += -dynamic
  endif
+ LDFLAGS := @LDFLAGS@ 
++EXEEXT := @EXEEXT@
+ 
+ prefix := @PREFIX@
+ bindir := @BINDIR@
 --- origsrc/xar-1.5.2/configure.ac	2007-12-29 12:49:57.000000000 -0600
 +++ src/xar-1.5.2/configure.ac	2007-12-29 22:25:13.375000000 -0600
 @@ -120,6 +120,11 @@
@@ -137,3 +142,14 @@
  #ifdef HAVE_SYS_ACL_H
  #include <sys/acl.h>
  #endif
+--- origsrc/xar-1.5.2/src/Makefile.inc.in	2007-12-29 12:49:57.000000000 -0600
++++ src/xar-1.5.2/src/Makefile.inc.in	2009-06-15 23:21:35.730556500 -0500
+@@ -9,7 +9,7 @@ src_all : @objroot@src/xar @objroot@src/
+ 
+ src_install : @objroot@src/ixar
+ 	@INSTALL@ -d $(DESTDIR)$(BINDIR)
+-	@INSTALL@ -m 0755 $< $(DESTDIR)$(BINDIR)/xar
++	@INSTALL@ -m 0755 $< $(DESTDIR)$(BINDIR)/xar$(EXEEXT)
+ 	@INSTALL@ -d $(DESTDIR)$(MANDIR)/man1
+ 	@INSTALL@ -m 0644 @srcroot@src/xar.1 $(DESTDIR)$(MANDIR)/man1
+ 
